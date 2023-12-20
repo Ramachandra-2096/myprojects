@@ -25,7 +25,7 @@ def website_creation(college,file1,template):
         for year in years:
             for  i in range(len(subjects)):
                 for j in range(len(names[i])):
-                    os.makedirs(os.path.join('dirs',college+'/'+year+'/'+subjects[i]+'/'+names[i][j]),exist_ok =True)
+                    os.makedirs(os.path.join('website_creation/dirs',college+'/'+year+'/'+subjects[i]+'/'+names[i][j]),exist_ok =True)
         
 
 
@@ -41,5 +41,5 @@ def website_creation(college,file1,template):
     #call all the functions here for making it easy to use for User
     years,subjects,names = content_creation(file1)
     Directory_creation(college,years,subjects,names)
-    file_creation(os.path.join('dirs',college),template)             
+    file_creation(os.path.join('website_creation/dirs',college),template)             
     return "Directory and Files are created successfully"

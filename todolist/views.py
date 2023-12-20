@@ -4,7 +4,7 @@ from .models import Task
 
 def index(request):
     tasks = Task.objects.all()
-    return render(request, 'index.html', {'tasks': tasks})
+    return render(request, 'todolist/index.html', {'tasks': tasks})
 
 def create(request):
     if request.method == 'POST':

@@ -17,7 +17,7 @@ def set_cookie(request):
         response = HttpResponseRedirect('make_zip')  
         response.set_cookie('selected_value', lang)
         return response
-    return render(request, 'index.html')
+    return render(request, 'website_creation/index.html')
 
 def shtml(request):
     file_path = 'template/template2.html'
@@ -60,8 +60,8 @@ def make_zip(request):
             template = form.cleaned_data.get('template')
             uploaded_file = form.cleaned_data.get('file')
             
-            destination = os.path.join('static',uploaded_file.name)
-            destination1 =os.path.join('static',template.name)
+            destination = os.path.join('website_creation/static',uploaded_file.name)
+            destination1 =os.path.join('website_creation/static',template.name)
             try:
                 with open(destination, 'wb+') as destination_file:
                         destination_file.write(uploaded_file.read())
@@ -83,7 +83,7 @@ def make_zip(request):
     else:
         form = submit_form()
         
-    return render(request, 'template.html', {'form': form,'my_dict':my_dict})
+    return render(request, 'website_creation/template.html', {'form': form,'my_dict':my_dict})
 
 
 

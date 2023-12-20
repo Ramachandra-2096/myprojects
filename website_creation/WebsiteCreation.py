@@ -35,13 +35,14 @@ def create_main(lang, name, uploaded_file, template):
 
     college = name
     result = wc(college, uploaded_file, template)
+    
     output_zip = 'WebsiteCreation_' + college + time1()
-    output_zipfile = os.path.join('static', output_zip)
-    shutil.make_archive(output_zipfile, 'zip', os.path.join('dirs', college))
+    output_zipfile = os.path.join('website_creation/static', output_zip)
+    shutil.make_archive(output_zipfile, 'zip', os.path.join('website_creation/dirs', college))
     
     s5 =f"{output_zip}.zip {s4}"
     time.sleep(1)
-    shutil.rmtree(os.path.join('dirs', college))
+    shutil.rmtree(os.path.join('website_creation/dirs', college))
     s1=f"{output_zip}.zip "+s1
     with open(output_zipfile + '.zip', 'rb') as zip_file:
         response = HttpResponse(zip_file.read(), content_type='application/zip')

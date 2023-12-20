@@ -18,5 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('todolist.urls')),
+    path('todolist/', include('todolist.urls')),
+    path('website_creation/', include('website_creation.urls')),
 ]
