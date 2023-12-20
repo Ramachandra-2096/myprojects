@@ -1,0 +1,5 @@
+21:CS:Nishita,Yukta,Navya,Katyayini,Krishna
+21:EC:Dhanush,Shreya,Sharan
+21:AI:Nidhi,Pradyumna,Ramachandra
+21:DS:Rakshita,Ramyashree,Anusha
+21:ME:Sudarshan,Suhas
