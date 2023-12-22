@@ -37,8 +37,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'todolist',
-    'website_creation',
+    'todolist',#complete
+    'website_creation',#complete
+    'my_message',
+    'form_all ',
+    'crud_system',
+    'NITk_hack',
+    'varnotsava',
+    'TCR_Elearning',
 ]
 
 MIDDLEWARE = [
