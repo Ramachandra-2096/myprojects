@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat</title>
+</head>
+<body>
+    <h1>Chat</h1>
+    <iframe id="chat-frame" src="{% url 'get_messages' %}" style="height: 300px; width: 100%;"></iframe>
+    <form id="chat-form">
+        {% csrf_token %}
+        <input type="text" id="message-input" placeholder="Type a message...">
+        <button type="button" id="send-button">Send</button>
+    </form>
+
+    <script>
+        function updateChat() {
+            // Refresh the iframe to fetch new messages
+            document.getElementById('chat-frame').contentWindow.location.reload();
+        }
+
+        // Periodically update the chat every 5 seconds
+        setInterval(updateChat, 5000);
+
+        document.getElementById('send-button').addEventListener('click', function () {
+            const messageInput = document.getElementById('message-input');
+            const messageContent = messageInput.value;
+
+            if (messageContent.trim() !== '') {
+                fetch('/chat/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRFToken': document.getElementsByName('csrfmiddlewaretoken')[0].value,
+                    },
+                    body: `message=${encodeURIComponent(messageContent)}`,
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            messageInput.value = '';
+                        }
+                    });
+            }
+        });
+    </script>
+</body>
+</html>
