@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'todolist',#complete
     'website_creation',#complete
     'my_message',
-    'form_all ',
+    'form_all',
     'crud_system',
     'NITk_hack',
     'varnotsava',

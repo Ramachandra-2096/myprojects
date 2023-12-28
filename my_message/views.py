@@ -28,7 +28,7 @@ def custom_login(request):
                 if user is not None:
                     auth_login(request, user)
                     messages.add_message(request, messages.SUCCESS, 'Login successful!')
-                    return redirect('home', permanent=True)  # 'permanent=True' will cause a 301 redirect  
+                    return redirect('chat', permanent=True)  # 'permanent=True' will cause a 301 redirect  
                 else:
                     messages.error(request, 'Invalid username or password')
             else:
@@ -41,30 +41,32 @@ def custom_login(request):
                 user.save()
                 auth_login(request, user)
                 messages.success(request, 'Signup successful!')
-                return redirect('home')
+                return redirect('chat')
             else:
                 messages.error(request, 'Signup form is not valid')
                 print(form.errors)
 
     return render(request, 'my_message/index.html', {'login_form': login_form, 'signup_form': signup_form})
 
+from django.http import JsonResponse
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .models import ChatMessage
+
 @login_required
 def chat_view(request):
     if request.method == 'POST':
-        message_content = request.POST.get('message')
+        user = request.user
+        message_content = request.POST.get('message_input')
         if message_content:
             ChatMessage.objects.create(user=request.user, content=message_content)
             return JsonResponse({'status': 'success'})
-    user =request.user
-    company = user.company
-    messages = ChatMessage.objects.filter(company=company)
+    messages = ChatMessage.objects.all()
     return render(request, 'my_message/home.html', {'messages': messages})
-
-# views.py
-from django.http import JsonResponse
 
 @login_required
 def get_messages(request):
+    user = request.user
     messages = ChatMessage.objects.all()
-    messages_data = [{'user': message.user.username, 'content': message.content} for message in messages]
+    messages_data = [{'user': message.user.first_name, 'content': message.content,'timestamp': message.timestamp, 'is_mine': message.user == request.user} for message in messages]
     return JsonResponse({'messages': messages_data})
