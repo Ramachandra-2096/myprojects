@@ -1,0 +1,152 @@
+*{
+    margin:0;
+    font-family: Arial;
+    border: border-box;
+}
+
+
+/*box2*/
+.add1{
+    margin-left: 15px;
+    color:#CCCCCC;
+    font-size: 0.86;
+}
+.add2{
+    margin-left: 5px;
+}
+.add-icon{
+    display: flex;
+    align-items: center;
+}
+/*box3*/
+.nav-search{
+    display:flex;
+    justify-content:space-evenly;
+    background-color: aqua;
+    width: 300px;
+    height: 40px;
+    border-radius: 4px;
+    
+}
+.search-select{
+    background-color: #f3f3f3;
+    width:40px;
+    text-align: center;
+    border-top-left-radius:4px;
+    border-bottom-left-radius: 4px;
+    border:none;
+}
+.search-input{
+    width:100%;
+    font-size: 1rem;
+    border:none;
+}
+.search-icon{
+    width:45px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:1.2rem;
+    background-color:rgb(250, 243, 243);
+    color:#0F1111;
+    border-top-right-radius:4px;
+    border-bottom-right-radius: 4px;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("imgbck.jpeg");
+    background-size:cover; /* Adjust as needed */
+    background-repeat: no-repeat;
+   
+};
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+a:hover {
+  -webkit-text-fill-color: #fff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #191414;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 15px;
+    font-size: 18px;
+}
+
+#nav-bar-back{
+    background-color:  rgba(84, 6, 23, 0.638);
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    
+    color:#fff;
+    z-index: 2;
+}
+#nav-bar-back:before{
+    background-color:  transparent;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2; 
+}
+.nav-bar1{
+    background-color:#111827cb;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:#fff;
+    position: absolute;
+    z-index: 2;
+    font-weight: bold; 
+    margin-bottom: 2000px;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.repository {
+    width: 30%;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+        background-color: rgba(245, 245, 245, 0.879);
+      margin-top: 50px;
+}
+#mainsection{
+    background-image: url("homebckc.png");
+}
+.head{
+    padding:20px;
+    background-color:  #111827ef;
+}
+#profile{
+    background-color: #111827ef;
+}
+h2{
+    font-weight: bold;
+    font-size: 20px;
+}

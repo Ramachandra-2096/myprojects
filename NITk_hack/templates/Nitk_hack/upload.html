@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Upload</title>
+    <!-- Include Tailwind CSS styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <!-- Include FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Include custom styles -->
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #3490dc, #6cb2eb); /* Gradient background */
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif; /* You can change the font-family */
+        }
+
+        .form-container {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.9); /* Partially transparent white background */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Subtle box shadow */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .form-container:hover {
+            transform: rotateY(5deg) scale(1.02);
+        }
+
+        button {
+            background-color: #4b5563;
+            color: #ffffff;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #2c3440;
+        }
+
+        .file-input-container {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .file-input {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .upload-icon {
+            font-size: 24px;
+            color: #4b5563;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen">
+    <div class="form-container">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Project Upload</h1>
+        <form method="post" enctype="multipart/form-data" class="space-y-4">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="projectName" class="text-gray-600 text-sm block">Project Name</label>
+               {{form.project_name}} 
+            </div>
+            <div class="mb-4 file-input-container">
+                <label for="file" class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></label>
+                <p>Select Zip-file</p><p class="file-input">{{form.project_file}}</p>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">Upload your project as a zip file</p>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Upload</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Set up Three.js scene
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create a colorful representation of the Milky Way
+        const starsCount = 900;
+        const starsGeometry = new THREE.BufferGeometry();
+        
+        const starsMaterial = new THREE.PointsMaterial({
+            size: 4,
+            vertexColors: THREE.VertexColors
+        });
+
+        const starsVertices = [];
+        const starsColors = [];
+
+        for (let i = 0; i < starsCount; i++) {
+            const x = (Math.random() - 0.5) * 1000;
+            const y = (Math.random() - 0.5) * 1000;
+            const z = (Math.random() - 0.5) * 1000;
+            
+            // Randomize color
+            const color = new THREE.Color(Math.random(), Math.random(), Math.random());
+
+            starsVertices.push(x, y, z);
+            starsColors.push(color.r, color.g, color.b);
+        }
+
+        starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsVertices, 3));
+        starsGeometry.setAttribute('color', new THREE.Float32BufferAttribute(starsColors, 3));
+
+        const stars = new THREE.Points(starsGeometry, starsMaterial);
+        scene.add(stars);
+
+        // Position the camera
+        camera.position.z = 800;
+
+        // Render function
+        const animate = () => {
+            requestAnimationFrame(animate);
+
+            // Rotate the Milky Way
+            stars.rotation.x += 0.001;
+            stars.rotation.y += 0.001;
+
+            renderer.render(scene, camera);
+        };
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Call the animate function
+        animate();
+    </script>
+</body>
+</html>

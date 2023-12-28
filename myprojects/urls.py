@@ -22,4 +22,5 @@ urlpatterns = [
     path('website_creation/', include('website_creation.urls')),
     path('chating/', include('my_message.urls')),
     path('Wordgame/', include('myapp.urls')),
+    path('Nitk_hack/', include('Nitk_hack.urls')),
 ]

@@ -1,0 +1,14 @@
+<!-- resource_list.html -->
+<h1>Shared Resources</h1>
+
+<form method="post" action="{% url 'share_resource' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Share</button>
+</form>
+
+<ul>
+    {% for resource in shared_resources %}
+        <li>{{ resource.resource_name }} - <a href="{% url 'unshare_resource' resource.id %}">Unshare</a></li>
+    {% endfor %}
+</ul>

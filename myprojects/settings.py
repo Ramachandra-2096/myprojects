@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'my_message',#complete
     'form_all',
     'crud_system',
-    'NITk_hack',
+    'Nitk_hack',#complete
     'varnotsava',
     'TCR_Elearning',
     'myapp',#complete

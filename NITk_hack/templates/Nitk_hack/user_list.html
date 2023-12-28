@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <title>User List</title>
+    <!-- Include Tailwind CSS styles -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body class="font-sans bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-4xl font-bold text-white mb-8">User List</h1>
+    
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {% for profile in profile_image_urls %}
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    {% if profile.image_url %}
+                    <img src="{{ profile.image_url }}" alt="User Photo" class="w-full h-40 object-contain mb-4 rounded-lg">
+                    {% else %}
+                        <img src="{% static 'images/default_user_image.jpg' %}" alt="Default User Photo" class="w-full h-40 object-cover mb-4 rounded-lg">
+                    {% endif %}
+                    <h4 class="text-xl font-bold mb-3 whitespace-normal break-all">{{ profile.user.username }}</h4>
+                    <p class="text-gray-600 mb-4">Some user information or description can go here.</p>
+                    {% if profile.user in connections %}
+                        <button class="follow-btn bg-red-500 text-white py-2 px-4 rounded" data-user-id="{{ profile.user.id }}" data-status="unfollowed">Unfollow</button>
+                    {% else %}
+                        <button class="follow-btn bg-blue-500 text-white py-2 px-4 rounded" data-user-id="{{ profile.user.id }}" data-status="followed">Follow</button>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        
+<script>
+    $(document).ready(function () {
+        // Function to get the CSRF cookie value
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Check if this cookie string begins with the name we want
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    
+        $('.follow-btn').on('click', function () {
+            const btn = $(this);
+            const userId = btn.data('user-id');
+            const status = btn.data('status');
+    
+            // Get the CSRF token value
+            const csrftoken = getCookie('csrftoken');
+    
+            // Include the CSRF token in the AJAX request
+            $.ajaxSetup({
+                beforeSend: function (xhr, settings) {
+                    if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+    
+            $.post('{% url "follow_toggle" %}', { user_id: userId }, function (data) {
+                if (data.status === 'followed') {
+                    btn.text('Unfollow');
+                    btn.data('status', 'unfollowed');
+                } else {
+                    btn.text('Follow');
+                    btn.data('status', 'followed');
+                }
+            }).fail(function (error) {
+                console.error('Error:', error);
+                // Handle the error as needed
+            });
+        });
+    });
+    
+</script>
+
+</body>
+</html>

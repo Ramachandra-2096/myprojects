@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Company Signup</title>
+</head>
+
+<body class="bg-gray-100">
+
+    <div class="container mx-auto flex justify-center items-center h-screen">
+
+        <div class="bg-white p-8 rounded-md shadow-md w-96">
+
+            <h1 class="text-3xl font-semibold mb-6 text-center text-blue-500">Company Signup</h1>
+
+            <form action="{% url 'company_signup' %}" method="post" class="space-y-4">
+                {% csrf_token %}
+
+                <div>
+                    <label for="companyName" class="block text-gray-700 text-sm font-medium mb-2">Company Name</label>
+                    <input type="text" id="companyName" name="companyName"
+                        class="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500">
+                </div>
+
+                <div>
+                    <label for="code" class="block text-gray-700 text-sm font-medium mb-2">GST Code</label>
+                    <input type="text" id="code" name="code"
+                        class="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500">
+                </div>
+
+                <div>
+                    <label for="dateOfCreation" class="block text-gray-700 text-sm font-medium mb-2">Date of Creation</label>
+                    <input type="date" id="dateOfCreation" name="dateOfCreation"
+                        class="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500">
+                </div>
+
+                <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-full w-full">Signup</button>
+
+                <div class="mt-6">
+                    {% if code %}
+                        <div class="bg-gray-200 p-4 rounded-md">
+                            <p class="text-lg font-semibold text-gray-800">Code generated for your company:</p>
+                            <p class="text-xl text-indigo-600">{{ code }}</p>
+                            <p class="text-gray-600">Share it with your workers to join our platform</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    {% if error_message %}
+    <script>
+        alert("{{ error_message }}");
+    </script>
+    {% endif %}    
+</body>
+
+</html>

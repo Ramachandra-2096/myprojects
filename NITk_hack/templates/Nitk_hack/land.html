@@ -1,0 +1,204 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Collaboration Ecosystem</title>
+    <link rel="stylesheet" href="{% static 'stylemain.css' %}" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="clgname">
+            <img src="{% static 'logo-transparent-svg.svg' %}" height="100" id="logo">
+            <div id="name">
+              <div class="hero-content" style="margin-top:20px;font-size:25px">
+          <h2>𝐈𝐍𝐅𝐈𝐍𝐈𝐓𝐘</h2> 
+              </div>
+        </div>
+        </div>
+       
+        <div class="first" style="align-content:right">
+            <nav id="first-bar">
+                <ul>
+                    <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="mailto:info@sode-edu.in" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                    <li><a href="https://www.facebook.com/officialsmvitm" ><i class="fa-brands fa-facebook"></i></a></i></li>
+                    <li><a href="https://twitter.com/SmvitM" target="_blank"><i class="fa-brands fa-twitter"></i></i></a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        
+    </header>
+    <section class="collegename">
+        
+      <nav id="pages">
+        <ul>
+            <li><a href="#About">Home</a></li>
+            <li><a href="#features">Features</a></li>
+           <li><a href="{% url 'custom_login' %}">Login/SignUp</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="{% url 'company_signup' %}">register your Company</a></li>
+        </ul>
+    </nav>
+        
+       
+       </section>
+
+    <!-- Hero Section -->
+    <section id="about-section">
+        <div id="video"></div>
+        <div class="background-container"></div>> 
+        <div id="About">
+            <h1>Welcome to the Future of Work with Our Unified Digital Collaboration Ecosystem – Where Communication Meets Efficiency!"</h1>
+            <p>Empower Your Remote Team: Elevate Collaboration, Boost Productivity</p>
+            <a href="{% url 'custom_login' %}" class="rounded-button">Get Started Today</a>
+        </div>
+    </section>
+    
+
+    
+<section  id="feature">
+    
+    <center><h1>Key Features</h1></center>
+    <div id="features">
+        <div class="card">
+            <h3>Connecting with People and Chat  </h3>
+            <img src="{% static 'chat.jpg' %}">
+            <p>This is a brief description of feature 1.</p>
+          </div>
+          <div class="card">
+            <h3>Tracking Progress</h3>
+            <img src="{% static 'track1.jpg' %}">
+            <p>This is a brief description of feature 1.</p>
+          </div>
+          <div class="card">
+            <h3>File Sharing</h3>
+            <img src="{% static 'file share.jpg' %}">
+            <p>This is a brief description of feature 1.</p>
+          </div>
+          <div class="card">
+            <h3>Contributor Tracking</h3>
+            <img src="{% static 'img5.jpg' %}">
+            <p>This is a brief description of feature 1.</p>
+          </div>
+          <div class="card">
+            <h3>Company Progress Chart</h3>
+            <img src="{% static 'track.jpg' %}">
+            <p>This is a brief description of feature 1.</p>
+          </div>
+        </div>
+        <br>
+        
+
+ <br>
+        <section>
+            <center><h2>What Our Users Say</h2></center>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Testimonial 1 -->
+                    <div class="swiper-slide">
+                        <p class="testimonial-text">"The seamless collaboration features and user-friendly interface have transformed the way our team works together. It's a game-changer!"</p>
+                        <p class="testimonial-author">John Doe</p>
+                    </div>
+                    <br>
+    
+                    <!-- Testimonial 2 -->
+                    <div class="swiper-slide">
+                        <p class="testimonial-text">"I never thought remote collaboration could be this efficient until I experienced it with this platform. Communication has never been easier!"</p>
+                        <p class="testimonial-author">Jane Smith</p>
+                    </div>
+    
+                    <!-- Add more testimonials as needed -->
+    
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+   
+</section>
+
+<footer>
+    <div style="width:50px;display:flex;margin-right:270px;">
+        <img src="{% static 'logo-transparent-svg.svg' %}" height="100" id="logo" style="size: 10px;">
+        <div>
+          <div  style="font-size:16px;margin-top: 16px;">
+      <h2>𝐈𝐍𝐅𝐈𝐍𝐈𝐓𝐘</h2> 
+          </div>
+    </div>
+    </div>
+    <div class="foot">
+        
+        <!-- Quick Links -->
+        <div>
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Service Rule</a></li>
+                <li><a href="#">Accreditation</a></li>
+                <li><a href="#">Career Opportunities</a></li>
+                <li><a href="#">Newsletter</a></li>
+            </ul>
+        </div>
+
+        <!-- Useful Info -->
+        <div>
+            <h4>About INFINITY</h4>
+            <ul>
+                <li><a href="">Blogs</a></li>
+                <li><a href="">Company</a></li>
+                <li><a href="">Careers</a></li>
+                <li><a href="">Events</a></li>
+               
+            </ul>
+        </div>
+
+        <!-- Contact Us -->
+        <div>
+            <h4>Contact Us</h4>
+            <p class="text-sm">
+                INFINITY<br>
+                Vishwothama Nagar, Bantakal<br>
+                Udupi - 574 115, Karnataka, India<br>
+                Tel: +91 9611615001<br>
+                Email: info@sode-edu.in
+            </p>
+            <!-- Add social media icons and search form -->
+        </div>
+    </div>
+
+    <!-- Copyright and Powered By -->
+    <div style="margin-top: 20px;">
+        <div class="text-sm">
+            © 2023 INFINITY. All Rights Reserved.
+        </div>
+    </div>
+</footer>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+</script>
+
+</body>
+
+</html>

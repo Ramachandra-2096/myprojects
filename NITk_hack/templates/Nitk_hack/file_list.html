@@ -1,0 +1,77 @@
+<!-- myapp/templates/file_list.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .file-card {
+            background-color: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .file-card:hover {
+            transform: scale(1.05);
+        }
+
+        .file-info {
+            padding: 1.5rem;
+        }
+
+        .file-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .file-type {
+            font-size: 1rem;
+            color: #718096;
+        }
+
+        .download-link {
+            display: block;
+            color: #3490dc;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .download-link:hover {
+            color: #2779bd;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8">
+        <h2 class="text-4xl font-bold mb-8 text-center">Files</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {% for file in files %}
+                <div class="file-card">
+                    <div class="file-info">
+                        <p class="file-name">{{ file.project_name }}</p>
+                        <p class="file-type">{{ file.project_file }}</p>
+                        <a href="{% url 'download_file' file.id %}" class="download-link">Download</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

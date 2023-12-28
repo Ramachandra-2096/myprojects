@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--projecttitle--><title>virtual tour1</title><!--projecttitle-end-->
+		<!--projectdescription--><meta name="description" content="Baruuuuurururuurru"><!--projectdescription-end-->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no">
+		
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+		<!-- Insert this line above script imports  -->
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+		
+		<script src="imagedata.js"></script>
+		<script src="jquery.js"></script>
+		<script src="three.min.js"></script>
+		<script src="panolens.min.js"></script>
+		
+		<!-- Insert this line after script imports -->
+		<script>if (window.module) module = window.module;</script>
+		
+		<style>
+		
+			
+						
+			/* SCROLLBAR STYLING */
+			/* width */
+			::-webkit-scrollbar {
+				width: 0.25em;
+				height: 0.25em;
+			}
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: #2c3643; 
+			}
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+				background: #0d9e59; 
+				transition: background .5s;
+			}
+			/* Handle on hover */
+			::-webkit-scrollbar-thumb:hover {
+				background: #00e075; 
+			}
+
+
+			html, body {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background-color: #000;
+				color; black;
+			}
+
+			a:link, a:visited{
+				color: #bdc3c7;	
+			}
+
+			.fullwrapper{
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: black;
+			}
+			
+			#container {
+                width: 100%;
+                height: 100%;
+            }
+			
+			#tmp{
+				position: fixed;
+				top: 0;
+				left: 0; 
+				right: 0;
+				bottom: 0;
+				padding: 3em;
+				background-color: rgba(0,0,0,.5);
+				backdrop-filter: blur(5px);
+				display: none;
+			}
+		</style>
+	</head>
+	<body id="body">
+	    <div id="container" style="color: black;"></div>
+    	
+		
+		
+		<!--customhtml--><div class='customhotspot' id='PANO_20231120_123648_3'></div><div class='customhotspot' id='PANO_20231120_123310_2'></div><div class='customhotspot' id='PANO_20231120_122919_1'></div><div class='customhotspot' id='PANO_20231120_122613_0'></div><div class='customhotspot' id='PANO_20231120_140910_5'></div><div class='customhotspot' id='PANO_20231120_140502_4'></div><div class='customhotspot' id='PANO_20231120_133811_0'></div><div class='customhotspot' id='PANO_20231120_134726_1'></div><div class='customhotspot' id='PANO_20231120_135651_1'></div><div class='customhotspot' id='PANO_20231120_140020_2'></div><div class='customhotspot' id='PANO_20231121_153528_2'></div><div class='customhotspot' id='PANO_20231121_154034_3'></div><div class='customhotspot' id='PANO_20231121_154407_4'></div><div class='customhotspot' id='PANO_20231121_154730_5'></div><div class='customhotspot' id='PANO_20231121_155229_6'></div><!--customhtml-end-->
+		
+		<div id="tmp">
+			<div style="width: 100%; height: 100%; overflow: hidden; overflow-y: auto; box-sizing: border-box; position: relative;" id="tmpcontent"></div>
+			<div class="mediaclosebutton" onclick="hideTemp()"><i class="fa fa-times-circle"></i></div>
+		</div>
+
+		<div id="loading" class="fullwrapper" style="display: table; width: 100%; height: 100%;">
+    		<div style="display: table-cell; vertical-align: middle; text-align: center; color: white; font-size: 30px; padding: 50px;">
+    			<!--loadingtext-->Loading...<!--loadingtext-end-->
+				<div id="loadingperc" style="font-size:12px;"></div>
+    		</div>
+    	</div>
+		
+    	<script>
+			
+            var container = document.querySelector( '#container' );
+			/*panolens*/
+var viewer = new PANOLENS.Viewer( { container: container , controlBar: false,  output: 'console' , autoHideInfospot: false, } );
+/*panolens-end*/
+			
+			viewer.addUpdateCallback(function(){});
+			
+			/*panoramas*/
+var PANO_20231120_123648_3 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231120_123648_3.jpg" );
+			PANO_20231120_123648_3.addEventListener('progress', onProgress);
+			PANO_20231120_123648_3.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231120_123648_3.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231120_123648_3.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231120_123648_30 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20231120_123648_30.position.set( 4937.75, 565.06, -503.52 );
+					PANO_20231120_123648_3.add(infospotPANO_20231120_123648_30);
+infospotPANO_20231120_123648_30.addEventListener('click', function(){
+ChangePanorama('PANO_20231121_153528_2');
+});
+var infospotPANO_20231120_123648_31 = new PANOLENS.Infospot( 512, hotspotIcons[5].data, true );
+					infospotPANO_20231120_123648_31.position.set( -4161.16, 69.33, -2755.19 );
+					PANO_20231120_123648_3.add(infospotPANO_20231120_123648_31);
+infospotPANO_20231120_123648_31.addEventListener('click', function(){
+});
+var infospotPANO_20231120_123648_32 = new PANOLENS.Infospot( 512, hotspotIcons[5].data, true );
+					infospotPANO_20231120_123648_32.position.set( 766.12, 237.33, -4924.62 );
+					PANO_20231120_123648_3.add(infospotPANO_20231120_123648_32);
+infospotPANO_20231120_123648_32.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_133811_0');
+});
+var infospotPANO_20231120_123648_33 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20231120_123648_33.position.set( -2356.76, 10.27, 4402.66 );
+					PANO_20231120_123648_3.add(infospotPANO_20231120_123648_33);
+infospotPANO_20231120_123648_33.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_122613_0');
+});
+viewer.add( PANO_20231120_123648_3 );
+var PANO_20231120_123310_2 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231120_123310_2.jpg" );
+			PANO_20231120_123310_2.addEventListener('progress', onProgress);
+			PANO_20231120_123310_2.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231120_123310_2.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231120_123310_2.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231120_123310_20 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotPANO_20231120_123310_20.position.set( -1153.59, -247.73, -4850.12 );
+					PANO_20231120_123310_2.add(infospotPANO_20231120_123310_20);
+infospotPANO_20231120_123310_20.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_122919_1');
+});
+var infospotPANO_20231120_123310_21 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20231120_123310_21.position.set( 4985.21, 235.80, -105.37 );
+					PANO_20231120_123310_2.add(infospotPANO_20231120_123310_21);
+infospotPANO_20231120_123310_21.addEventListener('click', function(){
+ChangePanorama('PANO_20231121_155229_6');
+});
+var infospotPANO_20231120_123310_22 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotPANO_20231120_123310_22.position.set( -325.15, 79.42, 4979.84 );
+					PANO_20231120_123310_2.add(infospotPANO_20231120_123310_22);
+infospotPANO_20231120_123310_22.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_134726_1');
+});
+viewer.add( PANO_20231120_123310_2 );
+var PANO_20231120_122919_1 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231120_122919_1.jpg" );
+			PANO_20231120_122919_1.addEventListener('progress', onProgress);
+			PANO_20231120_122919_1.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231120_122919_1.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231120_122919_1.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231120_122919_10 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotPANO_20231120_122919_10.position.set( -1310.23, -525.06, -4786.03 );
+					PANO_20231120_122919_1.add(infospotPANO_20231120_122919_10);
+infospotPANO_20231120_122919_10.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_122613_0');
+});
+var infospotPANO_20231120_122919_11 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotPANO_20231120_122919_11.position.set( 4989.60, -32.36, -174.24 );
+					PANO_20231120_122919_1.add(infospotPANO_20231120_122919_11);
+infospotPANO_20231120_122919_11.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_140020_2');
+});
+var infospotPANO_20231120_122919_12 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotPANO_20231120_122919_12.position.set( -227.03, 201.03, 4980.20 );
+					PANO_20231120_122919_1.add(infospotPANO_20231120_122919_12);
+infospotPANO_20231120_122919_12.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_123310_2');
+});
+viewer.add( PANO_20231120_122919_1 );
+var PANO_20231120_122613_0 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231120_122613_0.jpg" );
+			PANO_20231120_122613_0.addEventListener('progress', onProgress);
+			PANO_20231120_122613_0.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231120_122613_0.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231120_122613_0.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231120_122613_00 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20231120_122613_00.position.set( -3138.38, 144.80, -3876.26 );
+					PANO_20231120_122613_0.add(infospotPANO_20231120_122613_00);
+infospotPANO_20231120_122613_00.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_123648_3');
+});
+var infospotPANO_20231120_122613_01 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotPANO_20231120_122613_01.position.set( 4969.49, 278.13, -373.64 );
+					PANO_20231120_122613_0.add(infospotPANO_20231120_122613_01);
+infospotPANO_20231120_122613_01.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_135651_1');
+});
+var infospotPANO_20231120_122613_02 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotPANO_20231120_122613_02.position.set( -1000.82, 101.98, 4892.82 );
+					PANO_20231120_122613_0.add(infospotPANO_20231120_122613_02);
+infospotPANO_20231120_122613_02.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_122919_1');
+});
+viewer.add( PANO_20231120_122613_0 );
+var PANO_20231120_140910_5 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231120_140910_5.jpg" );
+			PANO_20231120_140910_5.addEventListener('progress', onProgress);
+			PANO_20231120_140910_5.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231120_140910_5.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231120_140910_5.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231120_140910_50 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20231120_140910_50.position.set( 344.79, 222.85, -4973.17 );
+					PANO_20231120_140910_5.add(infospotPANO_20231120_140910_50);
+infospotPANO_20231120_140910_50.addEventListener('click', function(){
+});
+var infospotPANO_20231120_140910_51 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotPANO_20231120_140910_51.position.set( 4855.42, -400.16, -1108.31 );
+					PANO_20231120_140910_5.add(infospotPANO_20231120_140910_51);
+infospotPANO_20231120_140910_51.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_140502_4');
+});
+var infospotPANO_20231120_140910_52 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20231120_140910_52.position.set( -1182.18, 248.33, 4842.43 );
+					PANO_20231120_140910_5.add(infospotPANO_20231120_140910_52);
+infospotPANO_20231120_140910_52.addEventListener('click', function(){
+});
+viewer.add( PANO_20231120_140910_5 );
+var PANO_20231120_140502_4 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231120_140502_4.jpg" );
+			PANO_20231120_140502_4.addEventListener('progress', onProgress);
+			PANO_20231120_140502_4.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231120_140502_4.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231120_140502_4.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231120_140502_40 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotPANO_20231120_140502_40.position.set( -3460.86, -156.68, -3591.82 );
+					PANO_20231120_140502_4.add(infospotPANO_20231120_140502_40);
+infospotPANO_20231120_140502_40.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_134726_1');
+});
+var infospotPANO_20231120_140502_41 = new PANOLENS.Infospot( 512, hotspotIcons[5].data, true );
+					infospotPANO_20231120_140502_41.position.set( 3594.53, 99.60, 3461.32 );
+					PANO_20231120_140502_4.add(infospotPANO_20231120_140502_41);
+infospotPANO_20231120_140502_41.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_140910_5');
+});
+viewer.add( PANO_20231120_140502_4 );
+var PANO_20231120_133811_0 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231120_133811_0.jpg" );
+			PANO_20231120_133811_0.addEventListener('progress', onProgress);
+			PANO_20231120_133811_0.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231120_133811_0.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231120_133811_0.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231120_133811_00 = new PANOLENS.Infospot( 512, hotspotIcons[8].data, true );
+					infospotPANO_20231120_133811_00.position.set( 1717.53, 201.83, -4680.61 );
+					PANO_20231120_133811_0.add(infospotPANO_20231120_133811_00);
+infospotPANO_20231120_133811_00.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_134726_1');
+});
+var infospotPANO_20231120_133811_01 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20231120_133811_01.position.set( 4921.88, 455.05, -697.14 );
+					PANO_20231120_133811_0.add(infospotPANO_20231120_133811_01);
+infospotPANO_20231120_133811_01.addEventListener('click', function(){
+});
+var infospotPANO_20231120_133811_02 = new PANOLENS.Infospot( 512, hotspotIcons[7].data, true );
+					infospotPANO_20231120_133811_02.position.set( -1626.44, -132.86, 4718.47 );
+					PANO_20231120_133811_0.add(infospotPANO_20231120_133811_02);
+infospotPANO_20231120_133811_02.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_123648_3');
+});
+viewer.add( PANO_20231120_133811_0 );
+var PANO_20231120_134726_1 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231120_134726_1.jpg" );
+			PANO_20231120_134726_1.addEventListener('progress', onProgress);
+			PANO_20231120_134726_1.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231120_134726_1.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231120_134726_1.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231120_134726_10 = new PANOLENS.Infospot( 512, hotspotIcons[5].data, true );
+					infospotPANO_20231120_134726_10.position.set( -4098.29, 319.49, -2833.98 );
+					PANO_20231120_134726_1.add(infospotPANO_20231120_134726_10);
+infospotPANO_20231120_134726_10.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_140910_5');
+});
+var infospotPANO_20231120_134726_11 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotPANO_20231120_134726_11.position.set( 4984.36, 67.51, -247.73 );
+					PANO_20231120_134726_1.add(infospotPANO_20231120_134726_11);
+infospotPANO_20231120_134726_11.addEventListener('click', function(){
+ChangePanorama('PANO_20231121_154034_3');
+});
+var infospotPANO_20231120_134726_12 = new PANOLENS.Infospot( 512, hotspotIcons[10].data, true );
+					infospotPANO_20231120_134726_12.position.set( -1426.47, -8.43, 4786.72 );
+					PANO_20231120_134726_1.add(infospotPANO_20231120_134726_12);
+infospotPANO_20231120_134726_12.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_140502_4');
+});
+var infospotPANO_20231120_134726_13 = new PANOLENS.Infospot( 512, hotspotIcons[8].data, true );
+					infospotPANO_20231120_134726_13.position.set( 4265.82, -119.78, -2590.39 );
+					PANO_20231120_134726_1.add(infospotPANO_20231120_134726_13);
+infospotPANO_20231120_134726_13.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_133811_0');
+});
+var infospotPANO_20231120_134726_14 = new PANOLENS.Infospot( 512, hotspotIcons[7].data, true );
+					infospotPANO_20231120_134726_14.position.set( 4102.73, -189.62, 2836.50 );
+					PANO_20231120_134726_1.add(infospotPANO_20231120_134726_14);
+infospotPANO_20231120_134726_14.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_123310_2');
+});
+viewer.add( PANO_20231120_134726_1 );
+var PANO_20231120_135651_1 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231120_135651_1.jpg" );
+			PANO_20231120_135651_1.addEventListener('progress', onProgress);
+			PANO_20231120_135651_1.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231120_135651_1.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231120_135651_1.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231120_135651_10 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20231120_135651_10.position.set( -992.20, -1749.91, 4572.30 );
+					PANO_20231120_135651_1.add(infospotPANO_20231120_135651_10);
+infospotPANO_20231120_135651_10.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_122613_0');
+});
+viewer.add( PANO_20231120_135651_1 );
+var PANO_20231120_140020_2 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231120_140020_2.jpg" );
+			PANO_20231120_140020_2.addEventListener('progress', onProgress);
+			PANO_20231120_140020_2.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231120_140020_2.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231120_140020_2.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231120_140020_20 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20231120_140020_20.position.set( -3906.29, -1645.62, -2635.94 );
+					PANO_20231120_140020_2.add(infospotPANO_20231120_140020_20);
+infospotPANO_20231120_140020_20.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_122919_1');
+});
+viewer.add( PANO_20231120_140020_2 );
+var PANO_20231121_153528_2 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231121_153528_2.jpg" );
+			PANO_20231121_153528_2.addEventListener('progress', onProgress);
+			PANO_20231121_153528_2.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231121_153528_2.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231121_153528_2.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231121_153528_20 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20231121_153528_20.position.set( 4288.80, -2085.43, 1478.74 );
+					PANO_20231121_153528_2.add(infospotPANO_20231121_153528_20);
+infospotPANO_20231121_153528_20.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_123648_3');
+});
+var infospotPANO_20231121_153528_21 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20231121_153528_21.position.set( -3815.98, -175.08, 3210.93 );
+					PANO_20231121_153528_2.add(infospotPANO_20231121_153528_21);
+infospotPANO_20231121_153528_21.addEventListener('click', function(){
+});
+var infospotPANO_20231121_153528_22 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20231121_153528_22.position.set( -3449.29, -89.90, -3607.10 );
+					PANO_20231121_153528_2.add(infospotPANO_20231121_153528_22);
+infospotPANO_20231121_153528_22.addEventListener('click', function(){
+});
+viewer.add( PANO_20231121_153528_2 );
+var PANO_20231121_154034_3 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231121_154034_3.jpg" );
+			PANO_20231121_154034_3.addEventListener('progress', onProgress);
+			PANO_20231121_154034_3.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231121_154034_3.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231121_154034_3.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231121_154034_30 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20231121_154034_30.position.set( 4711.82, -1334.63, -985.87 );
+					PANO_20231121_154034_3.add(infospotPANO_20231121_154034_30);
+infospotPANO_20231121_154034_30.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_134726_1');
+});
+var infospotPANO_20231121_154034_31 = new PANOLENS.Infospot( 512, hotspotIcons[7].data, true );
+					infospotPANO_20231121_154034_31.position.set( -948.31, -266.13, 4894.62 );
+					PANO_20231121_154034_3.add(infospotPANO_20231121_154034_31);
+infospotPANO_20231121_154034_31.addEventListener('click', function(){
+});
+var infospotPANO_20231121_154034_32 = new PANOLENS.Infospot( 512, hotspotIcons[5].data, true );
+					infospotPANO_20231121_154034_32.position.set( -4991.85, 15.11, 144.17 );
+					PANO_20231121_154034_3.add(infospotPANO_20231121_154034_32);
+infospotPANO_20231121_154034_32.addEventListener('click', function(){
+ChangePanorama('PANO_20231121_154730_5');
+});
+viewer.add( PANO_20231121_154034_3 );
+var PANO_20231121_154407_4 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231121_154407_4.jpg" );
+			PANO_20231121_154407_4.addEventListener('progress', onProgress);
+			PANO_20231121_154407_4.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231121_154407_4.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231121_154407_4.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231121_154407_40 = new PANOLENS.Infospot( 512, hotspotIcons[2].data, true );
+					infospotPANO_20231121_154407_40.position.set( 4861.41, -675.55, -912.30 );
+					PANO_20231121_154407_4.add(infospotPANO_20231121_154407_40);
+infospotPANO_20231121_154407_40.addEventListener('click', function(){
+ChangePanorama('PANO_20231121_154730_5');
+});
+var infospotPANO_20231121_154407_41 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotPANO_20231121_154407_41.position.set( 4954.38, -550.65, 218.83 );
+					PANO_20231121_154407_4.add(infospotPANO_20231121_154407_41);
+infospotPANO_20231121_154407_41.addEventListener('click', function(){
+});
+var infospotPANO_20231121_154407_42 = new PANOLENS.Infospot( 512, hotspotIcons[2].data, true );
+					infospotPANO_20231121_154407_42.position.set( 1015.32, -683.02, -4844.20 );
+					PANO_20231121_154407_4.add(infospotPANO_20231121_154407_42);
+infospotPANO_20231121_154407_42.addEventListener('click', function(){
+ChangePanorama('PANO_20231121_154730_5');
+});
+viewer.add( PANO_20231121_154407_4 );
+var PANO_20231121_154730_5 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231121_154730_5.jpg" );
+			PANO_20231121_154730_5.addEventListener('progress', onProgress);
+			PANO_20231121_154730_5.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231121_154730_5.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231121_154730_5.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231121_154730_50 = new PANOLENS.Infospot( 512, hotspotIcons[2].data, true );
+					infospotPANO_20231121_154730_50.position.set( 4936.36, -613.42, -420.88 );
+					PANO_20231121_154730_5.add(infospotPANO_20231121_154730_50);
+infospotPANO_20231121_154730_50.addEventListener('click', function(){
+ChangePanorama('PANO_20231121_154034_3');
+});
+var infospotPANO_20231121_154730_51 = new PANOLENS.Infospot( 512, hotspotIcons[5].data, true );
+					infospotPANO_20231121_154730_51.position.set( 4943.53, -358.94, 616.20 );
+					PANO_20231121_154730_5.add(infospotPANO_20231121_154730_51);
+infospotPANO_20231121_154730_51.addEventListener('click', function(){
+ChangePanorama('PANO_20231121_154407_4');
+});
+viewer.add( PANO_20231121_154730_5 );
+var PANO_20231121_155229_6 = new PANOLENS.ImagePanorama( "panoramas/PANO_20231121_155229_6.jpg" );
+			PANO_20231121_155229_6.addEventListener('progress', onProgress);
+			PANO_20231121_155229_6.addEventListener('load', function(e){
+				endLoading();
+			});
+			PANO_20231121_155229_6.addEventListener('enter', function(e){
+				endLoading();
+			});
+			PANO_20231121_155229_6.addEventListener('click', function(e){
+			});
+
+var infospotPANO_20231121_155229_60 = new PANOLENS.Infospot( 512, hotspotIcons[9].data, true );
+					infospotPANO_20231121_155229_60.position.set( 3921.51, -2212.54, 2161.42 );
+					PANO_20231121_155229_6.add(infospotPANO_20231121_155229_60);
+infospotPANO_20231121_155229_60.addEventListener('click', function(){
+ChangePanorama('PANO_20231120_123310_2');
+});
+viewer.add( PANO_20231121_155229_6 );
+$(document).ready(function(){ ChangePanorama('PANO_20231120_140910_5'); });
+
+/*panoramas-end*/
+            
+			var stilloading = true;
+			function onProgress ( event ) {
+				
+				progress = event.progress.loaded / event.progress.total * 100;
+				console.log("Loading panorama: " + progress + " ... ");
+				$("#loadingperc").html(Math.ceil(progress) + "%");
+				if(Math.ceil(progress) >= 100){
+					endLoading();
+					stilloading = false;
+
+				}else{
+				    clearTimeout(elTimer);
+					stilloading = true;
+					$("#loading").show();
+				}
+			}
+			
+			var elTimer;
+			function endLoading(){
+			    clearTimeout(elTimer);
+				if(stilloading == false){
+					elTimer = setTimeout(function(){
+						$("#loading").fadeOut();
+					}, 750);
+					
+				}
+			}
+			
+			function hideTemp(){
+				$("#tmp").fadeOut();
+				setTimeout(function(){
+					$("#tmpcontent").html("");
+				},1000);
+			}
+			
+			function showMedia(type, content){
+				switch(type){
+					case 1 :
+						//Image
+						$("#tmpcontent").html("<img src='"+content+"' style='width: 100%;'>");
+						$("#tmp").fadeIn();
+						break;
+					case 2 :
+						//Video
+						$("#tmpcontent").html("<video id='webvideo' controls autoplay style='width: 100%; height: 100%;'><source src='" +content+ "' type='video/mp4'> Your browser does not support the video tag. </video>");
+						$("#tmp").fadeIn();
+						break;
+					case 3 :
+						//Audio
+						$("#tmpcontent").html("<audio controls style='width: 100%;'><source src='"+content+"' type='audio/ogg'>Your browser does not support the audio tag.</audio>");
+						$("#tmp").fadeIn();
+						break;
+					case 4 :
+						//PDF
+						$("#tmpcontent").html("<iframe src='pdfjs/web/viewer.html?file=../../"+content+"' style='width: 100%; height: 99%;'></iframe>");
+						$("#tmp").fadeIn();
+						break;
+				}
+			}
+			
+			
+			
+			//Update Callback
+			viewer.addUpdateCallback(function(){
+				
+				/*viewerupdatecallback*/
+if(viewer.panorama == PANO_20231120_123648_3){
+}
+
+if(viewer.panorama == PANO_20231120_123310_2){
+}
+
+if(viewer.panorama == PANO_20231120_122919_1){
+}
+
+if(viewer.panorama == PANO_20231120_122613_0){
+}
+
+if(viewer.panorama == PANO_20231120_140910_5){
+}
+
+if(viewer.panorama == PANO_20231120_140502_4){
+}
+
+if(viewer.panorama == PANO_20231120_133811_0){
+}
+
+if(viewer.panorama == PANO_20231120_134726_1){
+}
+
+if(viewer.panorama == PANO_20231120_135651_1){
+}
+
+if(viewer.panorama == PANO_20231120_140020_2){
+}
+
+if(viewer.panorama == PANO_20231121_153528_2){
+}
+
+if(viewer.panorama == PANO_20231121_154034_3){
+}
+
+if(viewer.panorama == PANO_20231121_154407_4){
+}
+
+if(viewer.panorama == PANO_20231121_154730_5){
+}
+
+if(viewer.panorama == PANO_20231121_155229_6){
+}
+/*viewerupdatecallback-end*/
+				
+				
+			});
+			
+			
+			
+			var hotspotsvisible = true;
+			function ShowMyInfospot(hs, elid){
+				var thehs = toScreenPosition(hs);
+				if(thehs.z < 1){
+					$("#" + elid).css({
+						"top" : (thehs.y - ($("#" + elid).height()/2)) + "px",
+						"left" : (thehs.x - ($("#" + elid).width()/2)) + "px",
+					});
+					if(hotspotsvisible)
+						$("#" + elid).show();
+				}else{
+					$("#" + elid).hide();
+				}
+				
+			}
+			
+			function toScreenPosition(obj)
+			{
+				var vector = new THREE.Vector3();
+				var widthHalf = 0.5 * innerWidth;
+				var heightHalf = 0.5 * innerHeight;
+				
+				//obj.updateMatrixWorld();				
+				vector.setFromMatrixPosition(obj.matrixWorld);
+				
+				
+				vector.project(viewer.camera);
+
+				vector.x = ( vector.x * widthHalf ) + widthHalf;
+				vector.y = - ( vector.y * heightHalf ) + heightHalf;
+
+				
+				return { 
+					x: vector.x,
+					y: vector.y,
+					z: vector.z,
+				};
+
+			};
+			
+			var currentPanorama;
+			function ChangePanorama(panorama){
+				currentPanorama = panorama;
+				HideInfospots(); 
+				$("#loading").fadeIn();
+				//$(".customhotspot").fadeOut();
+				setTimeout(function(){
+					viewer.setPanorama(window[panorama]);
+				}, 100);
+				setTimeout(function(){
+					$("#" + panorama).fadeIn();
+				}, 1000);
+				
+			}
+			
+			
+			
+			
+			
+			function HideInfospots(){
+				$(".customhotspot").fadeOut();
+			}
+
+			/*customjs*//*customjs-end*/
+        </script>
+	</body>
+</html>
