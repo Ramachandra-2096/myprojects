@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'NITk_hack',
     'varnotsava',
     'TCR_Elearning',
+    'myapp',
 ]
 
 MIDDLEWARE = [

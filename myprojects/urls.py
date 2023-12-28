@@ -21,4 +21,5 @@ urlpatterns = [
     path('todolist/', include('todolist.urls')),
     path('website_creation/', include('website_creation.urls')),
     path('chating/', include('my_message.urls')),
+    path('Wordgame/', include('myapp.urls')),
 ]
