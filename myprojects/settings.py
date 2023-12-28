@@ -40,13 +40,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'todolist',#complete
     'website_creation',#complete
-    'my_message',
+    'my_message',#complete
     'form_all',
     'crud_system',
     'NITk_hack',
     'varnotsava',
     'TCR_Elearning',
-    'myapp',
+    'myapp',#complete
 ]
 
 MIDDLEWARE = [
