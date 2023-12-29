@@ -5,14 +5,6 @@ from django.contrib.auth.decorators import login_required
 from .forms import LoginForm, SignUpForm
 from django.contrib.auth.views import LoginView
 
-class CustomLoginView(LoginView): ##RUNNING
-    def get(self, request, *args, **kwargs):
-        redirect_url = '/custom_login'
-        return redirect(redirect_url)
-
-    def post(self, request, *args, **kwargs):
-        return super().post(request, *args, **kwargs)
-
 def land(request):
     return render(request,"Nitk_hack/land.html")
 

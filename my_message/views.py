@@ -7,15 +7,7 @@ from django.contrib.auth import login as auth_login, authenticate,logout
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
 
-class CustomLoginView(LoginView):
-    def get(self, request, *args, **kwargs):
-        redirect_url = '/custom_login'
-        return redirect(redirect_url)
-
-    def post(self, request, *args, **kwargs):
-        return super().post(request, *args, **kwargs)
-
-def custom_login(request):
+def custom_login1(request):
     login_form = LoginForm()
     signup_form = SignUpForm()
     if request.method == 'POST':
@@ -28,7 +20,7 @@ def custom_login(request):
                 if user is not None:
                     auth_login(request, user)
                     messages.add_message(request, messages.SUCCESS, 'Login successful!')
-                    return redirect('chat', permanent=True)  # 'permanent=True' will cause a 301 redirect  
+                    return redirect('chat_view1', permanent=True)  # 'permanent=True' will cause a 301 redirect  
                 else:
                     messages.error(request, 'Invalid username or password')
             else:
@@ -41,7 +33,7 @@ def custom_login(request):
                 user.save()
                 auth_login(request, user)
                 messages.success(request, 'Signup successful!')
-                return redirect('chat')
+                return redirect('chat_view1')
             else:
                 messages.error(request, 'Signup form is not valid')
                 print(form.errors)
@@ -54,7 +46,7 @@ from django.contrib.auth.decorators import login_required
 from .models import ChatMessage
 
 @login_required
-def chat_view(request):
+def chat_view1(request):
     if request.method == 'POST':
         user = request.user
         message_content = request.POST.get('message_input')
@@ -65,7 +57,7 @@ def chat_view(request):
     return render(request, 'my_message/home.html', {'messages': messages})
 
 @login_required
-def get_messages(request):
+def get_m(request):
     user = request.user
     messages = ChatMessage.objects.all()
     messages_data = [{'user': message.user.first_name, 'content': message.content,'timestamp': message.timestamp, 'is_mine': message.user == request.user} for message in messages]

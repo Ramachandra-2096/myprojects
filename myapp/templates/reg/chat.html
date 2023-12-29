@@ -128,7 +128,7 @@
                 var userMessage = $('#user_message').val();
                 var csrfToken = $('input[name="csrfmiddlewaretoken"]').val(); 
                 $.ajax({
-                    url: "/Wordgame/chat/",
+                    url: "/Wordgame/chat_word/",
                     type: "POST",
                     headers: { "X-CSRFToken": csrfToken },
                     data: { user_message: userMessage },

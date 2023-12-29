@@ -100,7 +100,7 @@
         }
     
         function updateChat() {
-            fetch('{% url 'get_messages' %}')
+            fetch('{% url 'get_m' %}')
                 .then(response => response.json())
                 .then(data => {
                     const chatContainer = document.getElementById('chat-container');

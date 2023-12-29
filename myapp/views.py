@@ -17,7 +17,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('chat')  
+                return redirect('chat_word')  
     else:
         form = AuthenticationForm()
     return render(request, 'reg/login.html', {'form': form})
@@ -28,14 +28,14 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('chat') 
+            return redirect('chat_word') 
     else:
         form = UserCreationForm()
     return render(request, 'reg/signup.html', {'form': form})
 
 @csrf_exempt
 @login_required
-def chat(request):
+def chat_word(request):
     alpha =[]
     timeout = 30
     for i in range(97,97+26,1):                      

@@ -427,7 +427,7 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form method="post" action="{% url 'custom_login' %}" class="sign-in-form">
+          <form method="post" action="{% url 'custom_login1' %}" class="sign-in-form">
             {% csrf_token %}
             <h2 class="title">Sign in</h2>
             <div class="input-field">
@@ -455,7 +455,7 @@
               </a>
             </div>
           </form>
-          <form method="post" action="{% url 'custom_login' %}" enctype="multipart/form-data" class="sign-up-form">
+          <form method="post" action="{% url 'custom_login1' %}" enctype="multipart/form-data" class="sign-up-form">
             {% csrf_token %}
             <h2 class="title">Sign up</h2>
             <div class="input-field">
