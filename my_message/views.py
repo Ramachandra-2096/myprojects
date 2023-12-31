@@ -6,7 +6,8 @@ from my_message.forms import LoginForm, SignUpForm
 from django.contrib.auth import login as auth_login, authenticate,logout
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
-
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
 def custom_login1(request):
     login_form = LoginForm()
     signup_form = SignUpForm()
@@ -44,7 +45,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import ChatMessage
-
+@csrf_exempt
 @login_required
 def chat_view1(request):
     if request.method == 'POST':

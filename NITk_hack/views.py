@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import login as auth_login, authenticate,logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from .forms import LoginForm, SignUpForm
 from django.contrib.auth.views import LoginView
 
@@ -18,7 +19,7 @@ class DummyDataView(View):
         }
 
         return JsonResponse(completed_projects_data)
-    
+@csrf_exempt    
 def custom_login(request):  ##RUNNING
     login_form = LoginForm()
     signup_form = SignUpForm()
@@ -58,7 +59,7 @@ import uuid
 def generate_unique_code():  ##RUNNING
     unique_code = str(uuid.uuid4())
     return unique_code
-
+@csrf_exempt
 class CompanySignupView(View):  ##RUNNING
     template_name = 'Nitk_hack/company_Register.html'
     def get(self, request):
@@ -101,7 +102,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import ChatMessage_hack
-
+@csrf_exempt
 @login_required
 def chat_view(request):
     if request.method == 'POST':
@@ -133,7 +134,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
-
+@csrf_exempt
 @login_required
 def user_profile(request):  ##RUNNING
     user = request.user
@@ -162,7 +163,7 @@ from .models import Task
 def index(request):
     tasks = Task.objects.filter(user=request.user)
     return render(request, 'Nitk_hack/index.html', {'tasks': tasks})
-
+@csrf_exempt
 def create(request):
     user=request.user
     if request.method == 'POST':
@@ -172,14 +173,14 @@ def create(request):
         due_time = request.POST.get('due_time')
         task = Task.objects.create(user=user,title=title, due_date=due_date, due_time=due_time, description=description)
         return JsonResponse({'status': 'ok'})
-
+@csrf_exempt
 def update(request, pk):
     if request.method == 'POST':
         task = Task.objects.get(user=request.user,pk=pk)
         task.completed = not task.completed
         task.save()
         return JsonResponse({'status': 'ok'})
-
+@csrf_exempt
 def delete(request, pk):
     if request.method == 'POST':
         task = Task.objects.get(user=request.user,pk=pk)
@@ -216,7 +217,7 @@ class UserListView(View):
 
         return render(request, 'Nitk_hack/user_list.html', context)
     
-    
+@csrf_exempt  
 class FollowToggleView(View):
     def post(self, request, *args, **kwargs):
         user_id = request.POST.get('user_id')
@@ -253,7 +254,7 @@ from django.http import HttpResponse
 def file_list(request):
     files = Project.objects.all()
     return render(request, 'Nitk_hack/file_list.html', {'files': files})
-
+@csrf_exempt
 def download_file(request, file_id):
     file = Project.objects.get(id=file_id)
     response = HttpResponse(file.project_file, content_type='application/force-download')
